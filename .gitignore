@@ -1,0 +1,32 @@
+.DS_Store
+Thumbs.db
+
+# Local browser/test artifacts
+.playwright-cli/
+output/
+app-webview-ua-mobile.png
+*.log
+
+# Dependencies and build output
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Archives and temporary packages
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# OS/editor metadata
+.idea/
+.vscode/
+*.swp
+*.swo
