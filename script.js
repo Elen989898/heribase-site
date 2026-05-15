@@ -124,6 +124,40 @@ function renderReviews() {
     .join("");
 }
 
+function bindCollectionCoins() {
+  const coin = document.getElementById("collectionCoin");
+  const coinImage = coin?.querySelector(".coin-3d__face img");
+  const name = document.getElementById("collectionCoinName");
+  const tag = document.getElementById("collectionCoinTag");
+  const description = document.getElementById("collectionCoinDescription");
+  const options = Array.from(document.querySelectorAll(".coin-option"));
+
+  if (!coin || !coinImage || !name || !tag || !description || options.length === 0) return;
+
+  const selectCoin = (option) => {
+    const coinKey = option.dataset.coin || "morgan";
+    const image = option.dataset.image || "public/coins/morgan-dollar.webp";
+
+    options.forEach((item) => {
+      const active = item === option;
+      item.classList.toggle("coin-option--active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+
+    coin.className = `coin-3d coin-3d--${coinKey}`;
+    coinImage.src = image;
+    coinImage.alt = "";
+    name.textContent = option.dataset.name || "Morgan Dollar";
+    tag.textContent = option.dataset.tag || "Rotating Preview";
+    description.textContent = option.dataset.description || "";
+  };
+
+  options.forEach((option, index) => {
+    option.setAttribute("aria-pressed", String(index === 0));
+    option.addEventListener("click", () => selectCoin(option));
+  });
+}
+
 function bindActiveNav() {
   const root = document.querySelector(".page-shell");
   const links = Array.from(document.querySelectorAll(".site-nav__link"));
@@ -163,4 +197,5 @@ function bindActiveNav() {
 }
 
 renderReviews();
+bindCollectionCoins();
 bindActiveNav();

@@ -757,15 +757,15 @@ a {
 
 .collection-showcase {
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
   gap: 18px;
   align-items: stretch;
 }
 
-.collection-hero-card,
-.collection-mini-card,
+.collection-viewer,
+.coin-option,
 .appraiser-card,
-.report-preview {
+.report-phone {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.075), transparent 44%),
@@ -773,7 +773,7 @@ a {
   box-shadow: var(--shadow);
 }
 
-.collection-hero-card {
+.collection-viewer {
   position: relative;
   display: grid;
   min-height: 460px;
@@ -783,8 +783,8 @@ a {
   border-radius: 30px;
 }
 
-.collection-hero-card::before,
-.report-preview::before {
+.collection-viewer::before,
+.report-phone::before {
   content: "";
   position: absolute;
   inset: auto -18% -36% 18%;
@@ -795,118 +795,197 @@ a {
   pointer-events: none;
 }
 
-.collection-side {
+.coin-selector {
   display: grid;
   gap: 18px;
 }
 
-.collection-mini-card {
+.coin-option {
+  appearance: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 18px;
   align-items: center;
-  min-height: 221px;
-  padding: 24px;
-  border-radius: 28px;
-}
-
-.coin-stage {
-  position: relative;
-  display: grid;
   min-height: 142px;
-  place-items: center;
-  perspective: 900px;
+  padding: 18px;
+  border-radius: 28px;
+  transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
 }
 
-.coin-stage--large {
-  min-height: 310px;
+.coin-option:hover,
+.coin-option--active {
+  transform: translateY(-4px);
+  border-color: rgba(240, 195, 127, 0.52);
+  background:
+    linear-gradient(135deg, rgba(240, 195, 127, 0.13), transparent 48%),
+    rgba(8, 13, 24, 0.86);
 }
 
-.coin-stage::after {
-  content: "";
-  position: absolute;
-  bottom: 16px;
-  width: 68%;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.48);
-  filter: blur(14px);
-}
-
-.coin-visual {
+.coin-option__thumb {
   position: relative;
-  z-index: 1;
   display: grid;
-  width: 132px;
+  width: 92px;
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  color: rgba(5, 7, 15, 0.78);
-  transform-style: preserve-3d;
+  background: rgba(255, 255, 255, 0.06);
   box-shadow:
-    inset -18px -22px 34px rgba(0, 0, 0, 0.24),
-    inset 10px 10px 24px rgba(255, 255, 255, 0.42),
-    0 26px 64px rgba(0, 0, 0, 0.38);
+    inset -10px -14px 22px rgba(0, 0, 0, 0.3),
+    0 18px 42px rgba(0, 0, 0, 0.34);
 }
 
-.coin-stage--large .coin-visual {
-  width: min(340px, 34vw);
-}
-
-.coin-visual::before,
-.coin-visual::after {
+.coin-option__thumb::before {
   content: "";
   position: absolute;
+  inset: 5px;
   border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.4) 0 3deg, rgba(0, 0, 0, 0.18) 3deg 6deg);
 }
 
-.coin-visual::before {
-  inset: 7%;
-  border: 2px solid rgba(255, 255, 255, 0.36);
-  box-shadow: inset 0 0 0 9px rgba(0, 0, 0, 0.08);
-}
-
-.coin-visual::after {
-  inset: 25%;
-  background:
-    linear-gradient(135deg, transparent 44%, rgba(0, 0, 0, 0.18) 45% 51%, transparent 52%),
-    radial-gradient(circle at 48% 36%, rgba(255, 255, 255, 0.52), transparent 20%),
-    rgba(0, 0, 0, 0.06);
-}
-
-.coin-visual__ring {
-  position: absolute;
-  inset: 15%;
-  border: 2px dashed rgba(8, 13, 24, 0.24);
-  border-radius: 50%;
-}
-
-.coin-visual__mark {
+.coin-option__thumb img {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.coin-option strong,
+.coin-option small {
+  display: block;
+}
+
+.coin-option strong {
+  margin-bottom: 6px;
+  font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+  letter-spacing: -0.04em;
+}
+
+.coin-option small {
+  color: #f0c37f;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.coin-visual--morgan {
+.coin-scene {
+  position: absolute;
+  inset: 26px 26px 112px;
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+}
+
+.coin-scene::after {
+  content: "";
+  position: absolute;
+  bottom: 12%;
+  width: min(360px, 56%);
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  filter: blur(18px);
+}
+
+.coin-orbit {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+  animation: coinFloat 5s ease-in-out infinite alternate;
+}
+
+.coin-3d {
+  --coin-image: url("public/coins/morgan-dollar.webp");
+  --coin-size: min(330px, 31vw);
+  --coin-edge-a: #d5dae2;
+  --coin-edge-b: #8a929d;
+  position: relative;
+  width: var(--coin-size);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  animation: coinRotate 8s linear infinite;
+}
+
+.coin-3d--morgan {
+  --coin-image: url("public/coins/morgan-dollar.webp");
+  --coin-edge-a: #eef2f6;
+  --coin-edge-b: #8a929d;
+}
+
+.coin-3d--eagle {
+  --coin-image: url("public/coins/american-gold-eagle.webp");
+  --coin-edge-a: #ffe8a0;
+  --coin-edge-b: #b77416;
+}
+
+.coin-3d--panda {
+  --coin-image: url("public/coins/chinese-panda.webp");
+  --coin-edge-a: #f7f9fd;
+  --coin-edge-b: #7f8794;
+}
+
+.coin-3d__face,
+.coin-3d__edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.coin-3d__edge {
+  transform: translateZ(-24px) scale(1.015);
   background:
-    radial-gradient(circle at 34% 28%, #ffffff, #d9dde4 24%, #8d949f 48%, #f5f7fb 70%, #707984 100%);
+    repeating-conic-gradient(from 0deg, var(--coin-edge-a) 0 2.4deg, var(--coin-edge-b) 2.4deg 4.8deg),
+    radial-gradient(circle, var(--coin-edge-a), var(--coin-edge-b));
+  box-shadow:
+    0 0 0 17px rgba(0, 0, 0, 0.22),
+    0 36px 80px rgba(0, 0, 0, 0.45);
 }
 
-.coin-visual--eagle {
+.coin-3d__face {
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  transform: translateZ(16px);
   background:
-    radial-gradient(circle at 35% 24%, #fff8cd, #f2bd4f 28%, #b87919 56%, #fff0a5 76%, #8a540f 100%);
+    radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.78), transparent 20%),
+    var(--coin-image) center / contain no-repeat;
+  box-shadow:
+    inset -18px -24px 34px rgba(0, 0, 0, 0.26),
+    inset 12px 12px 28px rgba(255, 255, 255, 0.38);
 }
 
-.coin-visual--panda {
-  background:
-    radial-gradient(circle at 35% 24%, #ffffff, #d8dde4 30%, #9fa8b5 52%, #eef2f7 76%, #6f7884 100%);
+.coin-3d__face::before {
+  content: "";
+  position: absolute;
+  inset: 3.5%;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 9px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.18);
 }
 
-.coin-visual--spin {
-  animation: coinRotate 7s linear infinite;
+.coin-3d__face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.5), transparent 24%, transparent 64%, rgba(0, 0, 0, 0.2));
+  mix-blend-mode: screen;
+}
+
+.coin-3d__face img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
 }
 
 .collection-card__copy {
@@ -917,7 +996,7 @@ a {
 
 .collection-card__eyebrow,
 .appraiser-card__role,
-.report-preview__header span {
+.report-phone__caption span {
   display: inline-block;
   margin-bottom: 10px;
   color: #f0c37f;
@@ -927,17 +1006,16 @@ a {
   text-transform: uppercase;
 }
 
-.collection-hero-card h3,
-.collection-mini-card h3,
+.collection-viewer h3,
 .appraiser-card h3 {
   margin: 0;
   font-size: clamp(1.35rem, 2.2vw, 2rem);
   letter-spacing: -0.04em;
 }
 
-.collection-hero-card p,
+.collection-viewer p,
 .appraiser-card p,
-.report-preview p {
+.report-phone p {
   margin: 12px 0 0;
   color: var(--muted);
   line-height: 1.65;
@@ -945,7 +1023,7 @@ a {
 
 .appraisal-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.7fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.55fr);
   gap: 18px;
   align-items: stretch;
 }
@@ -953,35 +1031,57 @@ a {
 .appraiser-panel {
   display: grid;
   gap: 18px;
+  min-width: 0;
 }
 
-.appraiser-grid {
+.appraiser-roster {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-auto-flow: column;
+  grid-auto-columns: 184px;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 2px 12px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 195, 127, 0.55) rgba(255, 255, 255, 0.08);
+}
+
+.appraiser-roster::-webkit-scrollbar {
+  height: 8px;
+}
+
+.appraiser-roster::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(240, 195, 127, 0.5);
+}
+
+.appraiser-roster::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .appraiser-card {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
-  gap: 18px;
-  align-items: center;
-  min-height: 188px;
-  padding: 20px;
-  border-radius: 26px;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  min-height: 166px;
+  padding: 14px;
+  border-radius: 20px;
+  text-align: center;
+  scroll-snap-align: start;
 }
 
 .appraiser-card--featured {
-  grid-template-columns: 148px minmax(0, 1fr);
-  min-height: 234px;
-  padding: 24px;
   background:
     linear-gradient(135deg, rgba(230, 166, 77, 0.14), transparent 42%),
     rgba(8, 13, 24, 0.82);
 }
 
 .appraiser-card__photo {
-  width: 100%;
+  width: 68px;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: top center;
@@ -991,56 +1091,122 @@ a {
 }
 
 .appraiser-card--featured .appraiser-card__photo {
-  border-radius: 28px;
+  border-radius: 22px;
 }
 
-.appraiser-card span {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 7px 10px;
-  border: 1px solid rgba(240, 195, 127, 0.24);
-  border-radius: 999px;
-  color: var(--muted-strong);
-  font-size: 0.78rem;
-  font-weight: 800;
+.appraiser-card h3 {
+  margin-bottom: 4px;
+  font-size: 0.98rem;
 }
 
-.report-preview {
-  position: relative;
-  display: grid;
+.appraiser-card p {
+  display: -webkit-box;
   overflow: hidden;
-  padding: 22px;
+  font-size: 0.74rem;
+  line-height: 1.42;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.report-phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
   border-radius: 30px;
 }
 
-.report-preview__header {
+.report-phone__shell {
   position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 2px;
-  margin-bottom: 16px;
-}
-
-.report-preview__header strong {
-  font-size: 1.22rem;
-}
-
-.report-preview__image {
-  position: relative;
-  z-index: 1;
+  width: min(285px, 100%);
+  aspect-ratio: 390 / 720;
   overflow: hidden;
-  height: 430px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 22px;
-  background: #f8f4ea;
+  padding: 18px 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 36px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 24%),
+    #070a12;
+  box-shadow:
+    inset 0 0 0 8px rgba(255, 255, 255, 0.045),
+    inset 0 0 0 11px rgba(0, 0, 0, 0.34),
+    0 34px 86px rgba(0, 0, 0, 0.44);
 }
 
-.report-preview__image img {
+.report-phone__speaker {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 3;
+  width: 58px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateX(-50%);
+}
+
+.report-phone__screen {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 25px;
+  background: #f8f4ea;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 25, 48, 0.42) transparent;
+}
+
+.report-phone__screen::-webkit-scrollbar {
+  width: 5px;
+}
+
+.report-phone__screen::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(16, 25, 48, 0.42);
+}
+
+.report-phone__screen::before,
+.report-phone__screen::after {
+  content: "";
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  display: block;
+  height: 42px;
+  pointer-events: none;
+}
+
+.report-phone__screen::before {
+  top: 0;
+  margin-bottom: -42px;
+  background: linear-gradient(180deg, rgba(248, 244, 234, 0.98), transparent);
+}
+
+.report-phone__screen::after {
+  bottom: 0;
+  margin-top: -42px;
+  background: linear-gradient(0deg, rgba(248, 244, 234, 0.98), transparent);
+}
+
+.report-phone__screen img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
+}
+
+.report-phone__caption {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.report-phone__caption strong {
+  display: block;
+  font-size: 1.15rem;
 }
 
 .story-layout {
@@ -1349,6 +1515,30 @@ a {
   }
 }
 
+@keyframes coinFloat {
+  from {
+    transform: translate3d(0, -8px, 0) rotateZ(-1deg);
+  }
+  to {
+    transform: translate3d(0, 10px, 0) rotateZ(1deg);
+  }
+}
+
+@supports not (transform-style: preserve-3d) {
+  .coin-3d,
+  .coin-orbit {
+    animation: none;
+  }
+
+  .coin-3d__edge {
+    display: none;
+  }
+
+  .coin-3d__face {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1400,7 +1590,7 @@ a {
   .story-layout,
   .collection-showcase,
   .appraisal-layout,
-  .appraiser-grid,
+  .appraiser-roster,
   .footer__top {
     grid-template-columns: 1fr;
   }
