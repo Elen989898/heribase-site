@@ -603,7 +603,7 @@ a {
   bottom: 0;
   z-index: 2;
   width: min(194px, 15.5vw);
-  aspect-ratio: 750 / 1740;
+  aspect-ratio: 750 / 1624;
   transform: rotateY(-12deg) rotateZ(-2deg);
 }
 
@@ -650,13 +650,17 @@ a {
 }
 
 .reviews-heading .section-label,
-.section--features .section-label {
+.section--features .section-label,
+.section--collection .section-label,
+.section--appraisal .section-label {
   position: relative;
   padding-left: 26px;
 }
 
 .reviews-heading .section-label::before,
-.section--features .section-label::before {
+.section--features .section-label::before,
+.section--collection .section-label::before,
+.section--appraisal .section-label::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -672,6 +676,14 @@ a {
 .story-copy h2,
 .footer h2 {
   font-size: clamp(3rem, 6vw, 5.8rem);
+}
+
+.section-heading__copy {
+  max-width: 360px;
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .feature-grid,
@@ -741,6 +753,294 @@ a {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.collection-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.collection-hero-card,
+.collection-mini-card,
+.appraiser-card,
+.report-preview {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), transparent 44%),
+    rgba(8, 13, 24, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.collection-hero-card {
+  position: relative;
+  display: grid;
+  min-height: 460px;
+  overflow: hidden;
+  align-items: end;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.collection-hero-card::before,
+.report-preview::before {
+  content: "";
+  position: absolute;
+  inset: auto -18% -36% 18%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 166, 77, 0.2), transparent 62%);
+  filter: blur(36px);
+  pointer-events: none;
+}
+
+.collection-side {
+  display: grid;
+  gap: 18px;
+}
+
+.collection-mini-card {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  min-height: 221px;
+  padding: 24px;
+  border-radius: 28px;
+}
+
+.coin-stage {
+  position: relative;
+  display: grid;
+  min-height: 142px;
+  place-items: center;
+  perspective: 900px;
+}
+
+.coin-stage--large {
+  min-height: 310px;
+}
+
+.coin-stage::after {
+  content: "";
+  position: absolute;
+  bottom: 16px;
+  width: 68%;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  filter: blur(14px);
+}
+
+.coin-visual {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 132px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  color: rgba(5, 7, 15, 0.78);
+  transform-style: preserve-3d;
+  box-shadow:
+    inset -18px -22px 34px rgba(0, 0, 0, 0.24),
+    inset 10px 10px 24px rgba(255, 255, 255, 0.42),
+    0 26px 64px rgba(0, 0, 0, 0.38);
+}
+
+.coin-stage--large .coin-visual {
+  width: min(340px, 34vw);
+}
+
+.coin-visual::before,
+.coin-visual::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.coin-visual::before {
+  inset: 7%;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  box-shadow: inset 0 0 0 9px rgba(0, 0, 0, 0.08);
+}
+
+.coin-visual::after {
+  inset: 25%;
+  background:
+    linear-gradient(135deg, transparent 44%, rgba(0, 0, 0, 0.18) 45% 51%, transparent 52%),
+    radial-gradient(circle at 48% 36%, rgba(255, 255, 255, 0.52), transparent 20%),
+    rgba(0, 0, 0, 0.06);
+}
+
+.coin-visual__ring {
+  position: absolute;
+  inset: 15%;
+  border: 2px dashed rgba(8, 13, 24, 0.24);
+  border-radius: 50%;
+}
+
+.coin-visual__mark {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.coin-visual--morgan {
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff, #d9dde4 24%, #8d949f 48%, #f5f7fb 70%, #707984 100%);
+}
+
+.coin-visual--eagle {
+  background:
+    radial-gradient(circle at 35% 24%, #fff8cd, #f2bd4f 28%, #b87919 56%, #fff0a5 76%, #8a540f 100%);
+}
+
+.coin-visual--panda {
+  background:
+    radial-gradient(circle at 35% 24%, #ffffff, #d8dde4 30%, #9fa8b5 52%, #eef2f7 76%, #6f7884 100%);
+}
+
+.coin-visual--spin {
+  animation: coinRotate 7s linear infinite;
+}
+
+.collection-card__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+}
+
+.collection-card__eyebrow,
+.appraiser-card__role,
+.report-preview__header span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #f0c37f;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.collection-hero-card h3,
+.collection-mini-card h3,
+.appraiser-card h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  letter-spacing: -0.04em;
+}
+
+.collection-hero-card p,
+.appraiser-card p,
+.report-preview p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.appraisal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.7fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.appraiser-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.appraiser-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.appraiser-card {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  min-height: 188px;
+  padding: 20px;
+  border-radius: 26px;
+}
+
+.appraiser-card--featured {
+  grid-template-columns: 148px minmax(0, 1fr);
+  min-height: 234px;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(230, 166, 77, 0.14), transparent 42%),
+    rgba(8, 13, 24, 0.82);
+}
+
+.appraiser-card__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.appraiser-card--featured .appraiser-card__photo {
+  border-radius: 28px;
+}
+
+.appraiser-card span {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 10px;
+  border: 1px solid rgba(240, 195, 127, 0.24);
+  border-radius: 999px;
+  color: var(--muted-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.report-preview {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  padding: 22px;
+  border-radius: 30px;
+}
+
+.report-preview__header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.report-preview__header strong {
+  font-size: 1.22rem;
+}
+
+.report-preview__image {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 430px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  background: #f8f4ea;
+}
+
+.report-preview__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .story-layout {
@@ -1037,6 +1337,18 @@ a {
   }
 }
 
+@keyframes coinRotate {
+  0% {
+    transform: rotateY(0deg) rotateX(8deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(8deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(8deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1086,6 +1398,9 @@ a {
   .feature-grid,
   .reviews-grid,
   .story-layout,
+  .collection-showcase,
+  .appraisal-layout,
+  .appraiser-grid,
   .footer__top {
     grid-template-columns: 1fr;
   }
