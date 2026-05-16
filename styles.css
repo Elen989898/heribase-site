@@ -2743,6 +2743,465 @@ a {
   }
 }
 
+@media (max-width: 760px) {
+  body {
+    background:
+      radial-gradient(circle at 78% 4%, rgba(216, 222, 230, 0.18), transparent 24%),
+      linear-gradient(160deg, #02050b 0%, #0a1222 45%, #1b2d55 100%);
+  }
+
+  .ambient {
+    opacity: 0.24;
+  }
+
+  .page-frame {
+    width: min(100% - 18px, 430px);
+  }
+
+  .site-header {
+    gap: 8px 10px;
+    padding: 9px 11px 10px;
+    border-radius: 24px;
+  }
+
+  .brand-mark__logo {
+    width: min(150px, 42vw);
+  }
+
+  .site-download {
+    min-width: 96px;
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+  }
+
+  .site-nav {
+    padding-top: 7px;
+  }
+
+  .site-nav__link {
+    font-size: 0.78rem;
+  }
+
+  .hero,
+  .section,
+  .footer {
+    padding: 28px 0;
+  }
+
+  .hero {
+    padding-top: 20px;
+  }
+
+  .hero__inner {
+    overflow: hidden;
+    padding: 22px;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at 86% 60%, rgba(240, 195, 127, 0.14), transparent 28%),
+      linear-gradient(160deg, rgba(255, 255, 255, 0.08), transparent 42%),
+      rgba(8, 13, 24, 0.82);
+  }
+
+  .hero__brand {
+    gap: 9px;
+    margin-bottom: 16px;
+  }
+
+  .hero__brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .hero__brand-logo {
+    width: min(190px, 58vw);
+  }
+
+  .hero h1 {
+    max-width: 8.6ch;
+    font-size: clamp(3.1rem, 13.4vw, 4rem);
+    line-height: 0.92;
+  }
+
+  .hero__subhead {
+    max-width: 29ch;
+    margin-top: 18px;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .hero__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .store-badge {
+    min-width: 0;
+    min-height: 52px;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .store-badge__icon {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+  }
+
+  .store-badge__kicker {
+    font-size: 0.55rem;
+  }
+
+  .store-badge__label {
+    font-size: 0.92rem;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .stat-chip {
+    display: grid;
+    justify-items: start;
+    gap: 2px;
+    min-height: 54px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .stat-chip strong {
+    font-size: 1rem;
+  }
+
+  .stat-chip span {
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+
+  .hero__app-showcase {
+    width: min(320px, 100%);
+    height: 250px;
+    margin-top: 22px;
+  }
+
+  .phone-mock--front {
+    right: 12%;
+    width: min(142px, 38vw);
+  }
+
+  .phone-mock--side {
+    right: 46%;
+    width: min(128px, 34vw);
+  }
+
+  .section-label,
+  .footer__eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.68rem;
+  }
+
+  .section-heading h2,
+  .story-copy h2,
+  .footer h2 {
+    font-size: clamp(2.25rem, 10.4vw, 3.1rem);
+  }
+
+  .section--features .section-heading h2 {
+    max-width: 10.5ch;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .feature-card {
+    display: grid;
+    align-content: start;
+    min-height: 182px;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .feature-card__icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 18px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 9px;
+    font-size: 0.96rem;
+    letter-spacing: -0.05em;
+  }
+
+  .feature-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.74rem;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .collection-showcase {
+    padding: 22px 16px;
+    border-radius: 26px;
+  }
+
+  .collection-stage__coins {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+
+  .collection-viewer {
+    grid-column: 1 / -1;
+    order: 1;
+    gap: 2px;
+  }
+
+  .collection-side-coin {
+    min-height: 0;
+    gap: 8px;
+    padding: 12px 8px 0;
+  }
+
+  .collection-side-coin--silver {
+    order: 2;
+  }
+
+  .collection-side-coin--bronze {
+    order: 3;
+  }
+
+  .coin-scene {
+    min-height: 244px;
+  }
+
+  .coin-3d {
+    --coin-size: min(232px, 64vw);
+    --coin-depth: 16px;
+  }
+
+  .collection-card__copy h3 {
+    font-size: clamp(1.46rem, 6.6vw, 1.85rem);
+  }
+
+  .collection-side-coin img {
+    width: min(132px, 34vw);
+  }
+
+  .collection-side-coin strong {
+    max-width: 14ch;
+    font-size: 0.86rem;
+    line-height: 1.12;
+  }
+
+  .collection-showcase__note {
+    max-width: 30ch;
+    margin-top: 18px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .appraisal-layout {
+    padding: 16px;
+    border-radius: 26px;
+  }
+
+  .appraisal-feature {
+    grid-template-columns: minmax(92px, 116px) minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+
+  .appraisal-feature__portrait {
+    width: 100%;
+    height: 152px;
+    margin: 0;
+    border-radius: 18px;
+  }
+
+  .appraisal-feature__copy h3 {
+    font-size: clamp(1.75rem, 9vw, 2.55rem);
+  }
+
+  .appraisal-feature__role {
+    font-size: 1.05rem;
+  }
+
+  .appraisal-feature__copy strong {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .appraisal-feature__copy p:not(.appraisal-feature__role) {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    line-height: 1.48;
+    -webkit-line-clamp: 3;
+  }
+
+  .appraisal-report {
+    grid-column: 1 / -1;
+    width: min(278px, 100%);
+    height: 418px;
+    margin: 2px auto 0;
+    border-radius: 42px;
+  }
+
+  .appraisal-report__screen {
+    border-radius: 30px;
+  }
+
+  .appraiser-strip {
+    gap: 12px;
+    padding-top: 2px;
+  }
+
+  .appraiser-thumb {
+    --thumb-size: 60px;
+    flex-basis: 74px;
+    gap: 7px;
+  }
+
+  .appraiser-thumb span {
+    font-size: 0.68rem;
+  }
+
+  .reviews-shell {
+    overflow: hidden;
+    padding: 0;
+    mask-image: none;
+  }
+
+  .reviews-track {
+    gap: 0;
+  }
+
+  .reviews-row--reverse {
+    display: none;
+  }
+
+  .reviews-row,
+  .reviews-row__set {
+    gap: 12px;
+  }
+
+  .reviews-row {
+    animation-duration: 34s;
+  }
+
+  .review-card {
+    width: min(312px, 78vw);
+    min-height: 124px;
+    padding: 14px;
+  }
+
+  .review-card__source {
+    display: none;
+  }
+
+  .footer {
+    padding-bottom: 18px;
+  }
+
+  .footer__top {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .footer__download {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .footer__bottom {
+    gap: 14px;
+  }
+
+  .footer__legal {
+    gap: 10px;
+  }
+
+  .footer__brand-logo {
+    width: 130px;
+  }
+
+  .footer__links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 14px;
+  }
+
+  .footer__links a {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-mark__logo {
+    width: min(132px, 39vw);
+  }
+
+  .site-download {
+    min-width: 88px;
+    padding: 0 10px;
+  }
+
+  .hero__inner {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.85rem, 13.5vw, 3.4rem);
+  }
+
+  .store-badge__label {
+    font-size: 0.82rem;
+  }
+
+  .feature-grid,
+  .collection-stage__coins {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    min-height: 0;
+  }
+
+  .collection-side-coin img {
+    width: min(150px, 50vw);
+  }
+
+  .appraisal-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .appraisal-feature__portrait {
+    width: min(210px, 72vw);
+    height: 242px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    width: min(288px, 82vw);
+  }
+}
+
 .legal-page {
   height: auto;
   min-height: 100vh;
