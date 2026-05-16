@@ -183,7 +183,14 @@ function bindAppraiserShowcase() {
 
   if (!photo || !name || !role || !experience || !description || thumbs.length === 0) return;
 
+  const carouselDelay = 15000;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeIndex = Math.max(0, thumbs.findIndex((thumb) => thumb.classList.contains("appraiser-thumb--active")));
+  let carouselTimer = 0;
+
   const selectAppraiser = (thumb) => {
+    activeIndex = Math.max(0, thumbs.indexOf(thumb));
+
     thumbs.forEach((item) => {
       const active = item === thumb;
       item.classList.toggle("appraiser-thumb--active", active);
@@ -198,10 +205,27 @@ function bindAppraiserShowcase() {
     description.textContent = thumb.dataset.description || "";
   };
 
+  const scheduleCarousel = () => {
+    window.clearTimeout(carouselTimer);
+    if (reduceMotion || thumbs.length < 2) return;
+
+    carouselTimer = window.setTimeout(() => {
+      const nextIndex = (activeIndex + 1) % thumbs.length;
+      selectAppraiser(thumbs[nextIndex]);
+      scheduleCarousel();
+    }, carouselDelay);
+  };
+
   thumbs.forEach((thumb) => {
     thumb.setAttribute("aria-pressed", String(thumb.classList.contains("appraiser-thumb--active")));
-    thumb.addEventListener("click", () => selectAppraiser(thumb));
+    thumb.addEventListener("click", () => {
+      selectAppraiser(thumb);
+      scheduleCarousel();
+    });
   });
+
+  selectAppraiser(thumbs[activeIndex]);
+  scheduleCarousel();
 }
 
 function bindActiveNav() {

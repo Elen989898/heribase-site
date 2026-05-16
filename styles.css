@@ -1264,10 +1264,15 @@ a {
   font-size: clamp(1.62rem, 2.6vw, 2.55rem);
 }
 
-.collection-card__copy p {
-  max-width: 520px;
-  margin: 10px auto 0;
+.collection-showcase__note {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 8px auto 0;
   color: var(--muted);
+  font-size: clamp(1rem, 1.25vw, 1.16rem);
+  line-height: 1.58;
+  text-align: center;
 }
 
 .collection-side-coin__badges,
@@ -1558,10 +1563,10 @@ a {
 
 .appraisal-report__screen img {
   display: block;
-  width: 118%;
+  width: 138%;
   max-width: none;
   height: auto;
-  margin-left: -9%;
+  margin-left: -19%;
 }
 
 .appraiser-strip {
@@ -1578,6 +1583,8 @@ a {
 
 .appraiser-thumb {
   appearance: none;
+  --thumb-size: min(104px, 7.8vw);
+  position: relative;
   display: grid;
   gap: 10px;
   justify-items: center;
@@ -1591,7 +1598,7 @@ a {
 }
 
 .appraiser-thumb img {
-  width: min(104px, 7.8vw);
+  width: var(--thumb-size);
   min-width: 72px;
   aspect-ratio: 1;
   object-fit: cover;
@@ -1604,6 +1611,22 @@ a {
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
+.appraiser-thumb::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: calc(var(--thumb-size) + 18px);
+  min-width: 90px;
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-top-color: rgba(246, 216, 137, 0.94);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) rotate(-90deg);
+}
+
 .appraiser-thumb:hover img,
 .appraiser-thumb--active img {
   transform: translateY(-3px);
@@ -1612,6 +1635,11 @@ a {
     0 0 0 6px rgba(240, 195, 127, 0.18),
     0 0 34px rgba(240, 195, 127, 0.32),
     0 20px 44px rgba(0, 0, 0, 0.44);
+}
+
+.appraiser-thumb--active::after {
+  opacity: 1;
+  animation: appraiserCarouselSpin 15s linear infinite;
 }
 
 .appraiser-thumb span {
@@ -2191,6 +2219,15 @@ a {
   }
   to {
     transform: translate3d(0, 10px, 0) rotateZ(1deg);
+  }
+}
+
+@keyframes appraiserCarouselSpin {
+  from {
+    transform: translateX(-50%) rotate(-90deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(270deg);
   }
 }
 
