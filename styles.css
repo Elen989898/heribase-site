@@ -757,13 +757,21 @@ a {
 
 .collection-showcase {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
-  gap: 18px;
-  align-items: stretch;
+  gap: 20px;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 34px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 34%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.055) 0 18%, transparent 18% 74%, rgba(255, 255, 255, 0.045) 74%),
+    rgba(7, 12, 23, 0.84);
+  box-shadow: var(--shadow);
 }
 
 .collection-viewer,
 .coin-option,
+.collection-side-coin,
 .appraiser-card,
 .report-phone {
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -776,11 +784,12 @@ a {
 .collection-viewer {
   position: relative;
   display: grid;
-  min-height: 460px;
+  min-height: 520px;
   overflow: hidden;
   align-items: end;
-  padding: 30px;
-  border-radius: 30px;
+  justify-items: center;
+  padding: 34px;
+  border-radius: 32px;
 }
 
 .collection-viewer::before,
@@ -795,9 +804,116 @@ a {
   pointer-events: none;
 }
 
+.collection-stage__coins {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(190px, 0.72fr) minmax(420px, 1.28fr) minmax(190px, 0.72fr);
+  gap: 22px;
+  align-items: center;
+}
+
+.collection-stage__coins::before {
+  content: "";
+  position: absolute;
+  inset: 11% 9%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 195, 127, 0.16), transparent 62%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.collection-side-coin {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 360px;
+  place-items: center;
+  padding: 24px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.collection-side-coin::before {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 195, 127, 0.18), transparent 66%);
+  filter: blur(12px);
+}
+
+.collection-side-coin img {
+  position: relative;
+  z-index: 1;
+  width: min(210px, 72%);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  filter:
+    drop-shadow(0 24px 34px rgba(0, 0, 0, 0.42))
+    saturate(0.95);
+}
+
+.collection-side-coin--silver img {
+  filter:
+    drop-shadow(0 24px 34px rgba(0, 0, 0, 0.42))
+    saturate(0.82);
+}
+
+.collection-side-coin--gold img {
+  filter:
+    drop-shadow(0 28px 44px rgba(0, 0, 0, 0.46))
+    saturate(1.08);
+}
+
+.collection-side-coin strong {
+  position: relative;
+  z-index: 1;
+  max-width: 240px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.6vw, 1.46rem);
+  font-weight: 600;
+}
+
+.collection-side-coin__badges,
+.collection-viewer__badges {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.collection-side-coin__badges {
+  top: 26px;
+  right: 22px;
+}
+
+.collection-viewer__badges {
+  top: 28px;
+  right: 30px;
+}
+
+.collection-side-coin__badges span,
+.collection-viewer__badges span {
+  display: inline-grid;
+  min-height: 26px;
+  place-items: center;
+  padding: 0 10px;
+  border: 1px solid rgba(240, 195, 127, 0.45);
+  border-radius: 999px;
+  background: rgba(240, 195, 127, 0.12);
+  color: #f7d8a1;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .coin-selector {
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .coin-option {
@@ -807,12 +923,12 @@ a {
   text-align: left;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 14px;
   align-items: center;
-  min-height: 142px;
-  padding: 18px;
-  border-radius: 28px;
+  min-height: 108px;
+  padding: 14px;
+  border-radius: 24px;
   transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
 }
 
@@ -828,7 +944,7 @@ a {
 .coin-option__thumb {
   position: relative;
   display: grid;
-  width: 92px;
+  width: 72px;
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
@@ -841,9 +957,12 @@ a {
 .coin-option__thumb::before {
   content: "";
   position: absolute;
-  inset: 5px;
+  inset: 4px;
   border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.4) 0 3deg, rgba(0, 0, 0, 0.18) 3deg 6deg);
+  background:
+    url("public/coins/coin-edge-ridged.png") center / 38px 100% repeat-x,
+    repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.4) 0 3deg, rgba(0, 0, 0, 0.18) 3deg 6deg);
+  background-blend-mode: overlay, normal;
 }
 
 .coin-option__thumb img {
@@ -862,7 +981,7 @@ a {
 
 .coin-option strong {
   margin-bottom: 6px;
-  font-size: clamp(1.15rem, 1.7vw, 1.55rem);
+  font-size: clamp(1rem, 1.35vw, 1.24rem);
   letter-spacing: -0.04em;
 }
 
@@ -876,7 +995,7 @@ a {
 
 .coin-scene {
   position: absolute;
-  inset: 26px 26px 112px;
+  inset: 34px 26px 130px;
   display: grid;
   place-items: center;
   perspective: 1100px;
@@ -902,7 +1021,7 @@ a {
 
 .coin-3d {
   --coin-image: url("public/coins/morgan-dollar.webp");
-  --coin-size: min(330px, 31vw);
+  --coin-size: min(390px, 27vw);
   --coin-edge-a: #d5dae2;
   --coin-edge-b: #8a929d;
   position: relative;
@@ -924,10 +1043,10 @@ a {
   --coin-edge-b: #b77416;
 }
 
-.coin-3d--panda {
-  --coin-image: url("public/coins/chinese-panda.webp");
-  --coin-edge-a: #f7f9fd;
-  --coin-edge-b: #7f8794;
+.coin-3d--double-eagle {
+  --coin-image: url("public/coins/us-gold-double-eagle.webp");
+  --coin-edge-a: #f4d28f;
+  --coin-edge-b: #8f541b;
 }
 
 .coin-3d__face,
@@ -938,13 +1057,25 @@ a {
 }
 
 .coin-3d__edge {
-  transform: translateZ(-24px) scale(1.015);
+  transform: translateZ(-28px) scale(1.026);
   background:
+    url("public/coins/coin-edge-ridged.png") center / 58px 100% repeat-x,
     repeating-conic-gradient(from 0deg, var(--coin-edge-a) 0 2.4deg, var(--coin-edge-b) 2.4deg 4.8deg),
     radial-gradient(circle, var(--coin-edge-a), var(--coin-edge-b));
+  background-blend-mode: multiply, normal, normal;
   box-shadow:
-    0 0 0 17px rgba(0, 0, 0, 0.22),
+    0 0 0 20px rgba(0, 0, 0, 0.2),
     0 36px 80px rgba(0, 0, 0, 0.45);
+}
+
+.coin-3d__edge::after {
+  content: "";
+  position: absolute;
+  inset: -2.5%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 1deg, rgba(255, 232, 175, 0.34) 0 1.6deg, rgba(0, 0, 0, 0.2) 1.6deg 3.2deg);
+  opacity: 0.78;
+  mix-blend-mode: overlay;
 }
 
 .coin-3d__face {
@@ -992,6 +1123,7 @@ a {
   position: relative;
   z-index: 1;
   max-width: 460px;
+  text-align: center;
 }
 
 .collection-card__eyebrow,
@@ -1023,54 +1155,314 @@ a {
 
 .appraisal-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.55fr);
-  gap: 18px;
-  align-items: stretch;
+  gap: 22px;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(240, 195, 127, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 38%),
+    rgba(7, 12, 23, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.appraisal-feature {
+  display: grid;
+  grid-template-columns: minmax(230px, 280px) minmax(310px, 1fr) minmax(330px, 390px);
+  gap: 28px;
+  align-items: end;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(240, 195, 127, 0.28);
+}
+
+.appraisal-feature__portrait {
+  position: relative;
+  overflow: hidden;
+  align-self: end;
+  height: 330px;
+  min-height: 0;
+  margin: 0;
+  border-radius: 8px 8px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
+    rgba(255, 255, 255, 0.045);
+}
+
+.appraisal-feature__portrait::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 46%;
+  background: linear-gradient(180deg, transparent, rgba(7, 12, 23, 0.42));
+}
+
+.appraisal-feature__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.94) contrast(1.04);
+}
+
+.appraisal-feature__copy {
+  padding: 10px 0 24px;
+}
+
+.appraisal-feature__eyebrow,
+.appraisal-feature__role {
+  margin: 0;
+  color: #f0c37f;
+  font-family: var(--font-display);
+}
+
+.appraisal-feature__eyebrow {
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  font-weight: 700;
+}
+
+.appraisal-feature__copy h3 {
+  margin: 10px 0 4px;
+  color: #f0c37f;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.2vw, 4.7rem);
+  font-weight: 700;
+  line-height: 0.92;
+}
+
+.appraisal-feature__role {
+  font-size: clamp(1.1rem, 1.6vw, 1.58rem);
+}
+
+.appraisal-feature__copy strong {
+  display: block;
+  margin-top: 22px;
+  font-size: 1.1rem;
+}
+
+.appraisal-feature__copy p:not(.appraisal-feature__eyebrow):not(.appraisal-feature__role) {
+  max-width: 560px;
+  margin: 12px 0 0;
+  color: var(--text-soft);
+  line-height: 1.62;
+}
+
+.appraisal-report {
+  position: relative;
+  align-self: stretch;
+  display: grid;
+  align-self: end;
+  height: 330px;
+  min-height: 0;
+  padding: 12px;
+  border: 1px solid rgba(240, 195, 127, 0.78);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(240, 195, 127, 0.18), transparent 42%),
+    rgba(245, 239, 224, 0.92);
+  box-shadow:
+    0 0 34px rgba(240, 195, 127, 0.28),
+    0 26px 70px rgba(0, 0, 0, 0.42);
+}
+
+.appraisal-report::before {
+  content: "Professional Appraisal Report";
+  position: absolute;
+  top: -34px;
+  right: 8px;
+  color: rgba(240, 195, 127, 0.84);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.appraisal-report__screen {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: #f9f4e8;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 25, 48, 0.42) transparent;
+}
+
+.appraisal-report__screen::-webkit-scrollbar {
+  width: 5px;
+}
+
+.appraisal-report__screen::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(16, 25, 48, 0.42);
+}
+
+.appraisal-report__screen::before,
+.appraisal-report__screen::after {
+  content: "";
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  display: block;
+  height: 38px;
+  pointer-events: none;
+}
+
+.appraisal-report__screen::before {
+  top: 0;
+  margin-bottom: -38px;
+  background: linear-gradient(180deg, rgba(249, 244, 232, 0.98), transparent);
+}
+
+.appraisal-report__screen::after {
+  bottom: 0;
+  margin-top: -38px;
+  background: linear-gradient(0deg, rgba(249, 244, 232, 0.98), transparent);
+}
+
+.appraisal-report__screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.appraiser-strip {
+  display: grid;
+  grid-template-columns: 34px repeat(7, minmax(0, 1fr)) 34px;
+  gap: 16px;
+  align-items: start;
+}
+
+.appraiser-strip::before,
+.appraiser-strip::after {
+  content: "";
+  align-self: center;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(240, 195, 127, 0.86);
+  border-style: solid;
+  transform: rotate(45deg);
+}
+
+.appraiser-strip::before {
+  border-width: 0 0 3px 3px;
+}
+
+.appraiser-strip::after {
+  justify-self: end;
+  border-width: 3px 3px 0 0;
+}
+
+.appraiser-thumb {
+  appearance: none;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+}
+
+.appraiser-thumb img {
+  width: min(104px, 7.8vw);
+  min-width: 72px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top center;
+  border: 4px solid rgba(240, 195, 127, 0.78);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  filter: saturate(0.92) contrast(1.04);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.appraiser-thumb:hover img,
+.appraiser-thumb--active img {
+  transform: translateY(-3px);
+  border-color: #f6d889;
+  box-shadow:
+    0 0 0 6px rgba(240, 195, 127, 0.18),
+    0 0 34px rgba(240, 195, 127, 0.32),
+    0 20px 44px rgba(0, 0, 0, 0.44);
+}
+
+.appraiser-thumb span {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.appraiser-thumb--active span {
+  color: #f0c37f;
 }
 
 .appraiser-panel {
   display: grid;
-  gap: 18px;
+  align-content: start;
+  gap: 20px;
   min-width: 0;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 32px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.065), transparent 36%),
+    rgba(8, 13, 24, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.appraiser-panel__intro {
+  max-width: 680px;
+}
+
+.appraiser-panel__intro span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #f0c37f;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.appraiser-panel__intro h3 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.1vw, 2.45rem);
+  letter-spacing: -0.04em;
+}
+
+.appraiser-panel__intro p {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .appraiser-roster {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 184px;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  overflow-x: auto;
-  padding: 2px 2px 12px;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(240, 195, 127, 0.55) rgba(255, 255, 255, 0.08);
-}
-
-.appraiser-roster::-webkit-scrollbar {
-  height: 8px;
-}
-
-.appraiser-roster::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(240, 195, 127, 0.5);
-}
-
-.appraiser-roster::-webkit-scrollbar-track {
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .appraiser-card {
   display: grid;
-  grid-template-columns: 1fr;
-  align-content: center;
-  justify-items: center;
-  gap: 10px;
-  min-height: 166px;
-  padding: 14px;
-  border-radius: 20px;
-  text-align: center;
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-height: 116px;
+  overflow: hidden;
+  padding: 12px;
+  border-radius: 22px;
+  text-align: left;
   scroll-snap-align: start;
 }
 
@@ -1081,28 +1473,34 @@ a {
 }
 
 .appraiser-card__photo {
-  width: 68px;
-  aspect-ratio: 1;
+  width: 88px;
+  height: 88px;
   object-fit: cover;
   object-position: top center;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 22px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.06);
+  filter: saturate(0.92) contrast(1.03);
 }
 
 .appraiser-card--featured .appraiser-card__photo {
-  border-radius: 22px;
+  border-radius: 18px;
 }
 
 .appraiser-card h3 {
   margin-bottom: 4px;
-  font-size: 0.98rem;
+  font-size: 1.02rem;
+}
+
+.appraiser-card__role {
+  margin-bottom: 6px;
+  font-size: 0.62rem;
 }
 
 .appraiser-card p {
   display: -webkit-box;
   overflow: hidden;
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   line-height: 1.42;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -1114,18 +1512,20 @@ a {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding: 20px;
-  border-radius: 30px;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 32px;
 }
 
 .report-phone__shell {
   position: relative;
-  width: min(285px, 100%);
+  width: min(398px, 100%);
+  max-height: 680px;
   aspect-ratio: 390 / 720;
   overflow: hidden;
-  padding: 18px 12px 12px;
+  padding: 20px 13px 14px;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 36px;
+  border-radius: 42px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 24%),
     #070a12;
@@ -1153,7 +1553,7 @@ a {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: 25px;
+  border-radius: 30px;
   background: #f8f4ea;
   scrollbar-width: thin;
   scrollbar-color: rgba(16, 25, 48, 0.42) transparent;
@@ -1201,7 +1601,8 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  margin-top: 18px;
+  max-width: 398px;
+  margin-top: 16px;
 }
 
 .report-phone__caption strong {

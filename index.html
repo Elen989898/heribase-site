@@ -10,7 +10,7 @@
     />
     <link rel="icon" href="public/brand/heribase-icon-64.png" />
     <script src="app-env.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260516-3" />
   </head>
   <body>
     <main class="page-shell">
@@ -199,23 +199,47 @@
           </div>
 
           <div class="collection-showcase" aria-label="Featured collectible coins">
-            <article class="collection-viewer">
-              <div class="coin-scene" aria-hidden="true">
-                <div class="coin-orbit">
-                  <div class="coin-3d coin-3d--morgan" id="collectionCoin">
-                    <span class="coin-3d__edge"></span>
-                    <span class="coin-3d__face">
-                      <img src="public/coins/morgan-dollar.webp" alt="" />
-                    </span>
+            <div class="collection-stage__coins" aria-hidden="true">
+              <div class="collection-side-coin collection-side-coin--silver">
+                <div class="collection-side-coin__badges">
+                  <span>Rare</span>
+                  <span>3D View</span>
+                </div>
+                <img src="public/coins/morgan-dollar-reverse.webp" alt="" />
+                <strong>Morgan Dollar</strong>
+              </div>
+
+              <article class="collection-viewer">
+                <div class="collection-viewer__badges">
+                  <span>In-App 3D</span>
+                  <span>Ridged Edge</span>
+                </div>
+                <div class="coin-scene" aria-hidden="true">
+                  <div class="coin-orbit">
+                    <div class="coin-3d coin-3d--morgan" id="collectionCoin">
+                      <span class="coin-3d__edge"></span>
+                      <span class="coin-3d__face">
+                        <img src="public/coins/morgan-dollar.webp" alt="" />
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div class="collection-card__copy">
+                  <span class="collection-card__eyebrow" id="collectionCoinTag">Rotating Preview</span>
+                  <h3 id="collectionCoinName">Morgan Dollar</h3>
+                  <p id="collectionCoinDescription">Inspect collectible coins with a dimensional view, visible ridged edges, and a richer display experience inside Heribase.</p>
+                </div>
+              </article>
+
+              <div class="collection-side-coin collection-side-coin--gold">
+                <div class="collection-side-coin__badges">
+                  <span>Gold</span>
+                  <span>3D View</span>
+                </div>
+                <img src="public/coins/us-gold-double-eagle.webp" alt="" />
+                <strong>US Gold 20 Dollar Double Eagle</strong>
               </div>
-              <div class="collection-card__copy">
-                <span class="collection-card__eyebrow" id="collectionCoinTag">Rotating Preview</span>
-                <h3 id="collectionCoinName">Morgan Dollar</h3>
-                <p id="collectionCoinDescription">A dimensional showcase for important pieces, rare finds, and collection highlights.</p>
-              </div>
-            </article>
+            </div>
 
             <div class="coin-selector" aria-label="Select a collection coin">
               <button
@@ -224,7 +248,7 @@
                 data-coin="morgan"
                 data-name="Morgan Dollar"
                 data-tag="Rotating Preview"
-                data-description="A dimensional showcase for important pieces, rare finds, and collection highlights."
+                data-description="Inspect collectible coins with a dimensional view, visible ridged edges, and a richer display experience inside Heribase."
                 data-image="public/coins/morgan-dollar.webp"
               >
                 <span class="coin-option__thumb coin-option__thumb--morgan">
@@ -257,18 +281,18 @@
               <button
                 class="coin-option"
                 type="button"
-                data-coin="panda"
-                data-name="Chinese Panda Coin"
-                data-tag="Collector Favorite"
-                data-description="A clean 3D collection view for modern world coins and signature pieces."
-                data-image="public/coins/chinese-panda.webp"
+                data-coin="double-eagle"
+                data-name="US Gold 20 Dollar Double Eagle"
+                data-tag="Historic Gold"
+                data-description="A landmark U.S. gold coin presentation for premium pieces, provenance review, and high-value collection showcases."
+                data-image="public/coins/us-gold-double-eagle.webp"
               >
-                <span class="coin-option__thumb coin-option__thumb--panda">
-                  <img src="public/coins/chinese-panda.webp" alt="" />
+                <span class="coin-option__thumb coin-option__thumb--double-eagle">
+                  <img src="public/coins/us-gold-double-eagle.webp" alt="" />
                 </span>
                 <span>
-                  <strong>Chinese Panda Coin</strong>
-                  <small>Modern world coin</small>
+                  <strong>US Gold 20 Dollar Double Eagle</strong>
+                  <small>Historic U.S. gold</small>
                 </span>
               </button>
             </div>
@@ -287,80 +311,58 @@
           </div>
 
           <div class="appraisal-layout">
-            <div class="appraiser-panel">
-              <div class="appraiser-roster" aria-label="Heribase appraisers">
-                <article class="appraiser-card">
-                  <img src="public/appraisers/ukraine.png" alt="Ukraine" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Numismatics Specialist</p>
-                    <h3>Ukraine</h3>
-                    <p>Russian Empire, Soviet, European, and American coinage.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card">
-                  <img src="public/appraisers/2eurohunt.png" alt="2EuroHunt" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Euro Coin Expert</p>
-                    <h3>2EuroHunt</h3>
-                    <p>2 euro commemorative coins, rare issues, and variants.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card">
-                  <img src="public/appraisers/mingjie.png" alt="MingJie" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Variety Analyst</p>
-                    <h3>MingJie</h3>
-                    <p>World coin varieties and modern Chinese circulation coins.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card appraiser-card--featured">
-                  <img src="public/appraisers/silverpicker.png" alt="Silverpicker" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Authentication Expert</p>
-                    <h3>Silverpicker</h3>
-                    <p>U.S. and global coins, banknotes, and authentication context.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card">
-                  <img src="public/appraisers/irishsilverstack.png" alt="Irishsilverstack" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Precious Metal Specialist</p>
-                    <h3>Irishsilverstack</h3>
-                    <p>Silver, gold, and investment coins with 14+ years of experience.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card">
-                  <img src="public/appraisers/numismatica-jf.png" alt="Numismática JF" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Brazilian Currency Expert</p>
-                    <h3>Numismática JF</h3>
-                    <p>Brazilian coins and banknotes, especially Real Plan issues.</p>
-                  </div>
-                </article>
-                <article class="appraiser-card">
-                  <img src="public/appraisers/manny-vilahomat.png" alt="Manny Vilahomat" class="appraiser-card__photo" />
-                  <div>
-                    <p class="appraiser-card__role">Error &amp; Variety Specialist</p>
-                    <h3>Manny Vilahomat</h3>
-                    <p>U.S. and Spanish coinage, mint errors, and rare varieties.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
+            <div class="appraisal-feature">
+              <figure class="appraisal-feature__portrait">
+                <img id="appraiserPhoto" src="public/appraisers/silverpicker.png" alt="Silverpicker" />
+              </figure>
 
-            <aside class="report-phone" aria-label="Scrollable appraisal report example">
-              <div class="report-phone__shell">
-                <div class="report-phone__speaker"></div>
-                <div class="report-phone__screen">
+              <div class="appraisal-feature__copy">
+                <p class="appraisal-feature__eyebrow">Heribase Expert Appraisers Showcase</p>
+                <h3 id="appraiserName">Silverpicker</h3>
+                <p class="appraisal-feature__role" id="appraiserRole">Authentication Expert</p>
+                <strong id="appraiserExperience">U.S. &amp; Global Coins</strong>
+                <p id="appraiserDescription">
+                  Reviews U.S. and global coins, banknotes, and authentication context for collectors who need a more trusted second look.
+                </p>
+              </div>
+
+              <aside class="appraisal-report" aria-label="Scrollable appraisal report example">
+                <div class="appraisal-report__screen">
                   <img src="public/appraisers/appraisal-case.png" alt="Example Heribase appraisal report" />
                 </div>
-              </div>
-              <div class="report-phone__caption">
-                <span>Report Case</span>
-                <strong>Scrollable expert report</strong>
-                <p>Review attribution, condition notes, and value context inside a phone-style appraisal result.</p>
-              </div>
-            </aside>
+              </aside>
+            </div>
+
+            <div class="appraiser-strip" aria-label="Select an appraiser">
+              <button class="appraiser-thumb" type="button" data-name="Ukraine" data-role="Numismatics Specialist" data-experience="Russian Empire, Soviet, European, and American coinage" data-description="Specializes in Russian Empire, Soviet, European, and American coinage, with a practical eye for attribution and market context." data-photo="public/appraisers/ukraine.png">
+                <img src="public/appraisers/ukraine.png" alt="" />
+                <span>Ukraine</span>
+              </button>
+              <button class="appraiser-thumb" type="button" data-name="2EuroHunt" data-role="Euro Coin Expert" data-experience="Commemorative euro issues and variants" data-description="Focuses on 2 euro commemorative coins, rare issues, and variants across modern European releases." data-photo="public/appraisers/2eurohunt.png">
+                <img src="public/appraisers/2eurohunt.png" alt="" />
+                <span>2EuroHunt</span>
+              </button>
+              <button class="appraiser-thumb" type="button" data-name="MingJie" data-role="Variety Analyst" data-experience="World coin varieties and modern Chinese coins" data-description="Supports variety review across world coins and modern Chinese circulation coins, helping collectors understand subtle differences." data-photo="public/appraisers/mingjie.png">
+                <img src="public/appraisers/mingjie.png" alt="" />
+                <span>MingJie</span>
+              </button>
+              <button class="appraiser-thumb appraiser-thumb--active" type="button" data-name="Silverpicker" data-role="Authentication Expert" data-experience="U.S. &amp; Global Coins" data-description="Reviews U.S. and global coins, banknotes, and authentication context for collectors who need a more trusted second look." data-photo="public/appraisers/silverpicker.png">
+                <img src="public/appraisers/silverpicker.png" alt="" />
+                <span>Silverpicker</span>
+              </button>
+              <button class="appraiser-thumb" type="button" data-name="Irishsilverstack" data-role="Precious Metal Specialist" data-experience="Silver, gold, and investment coins" data-description="Covers silver, gold, and investment coins with years of hands-on collecting and precious-metal market experience." data-photo="public/appraisers/irishsilverstack.png">
+                <img src="public/appraisers/irishsilverstack.png" alt="" />
+                <span>Irishsilverstack</span>
+              </button>
+              <button class="appraiser-thumb" type="button" data-name="Numismática JF" data-role="Brazilian Currency Expert" data-experience="Brazilian coins and banknotes" data-description="Reviews Brazilian coins and banknotes, with particular focus on Real Plan issues and regional collection context." data-photo="public/appraisers/numismatica-jf.png">
+                <img src="public/appraisers/numismatica-jf.png" alt="" />
+                <span>Numismática JF</span>
+              </button>
+              <button class="appraiser-thumb" type="button" data-name="Manny Vilahomat" data-role="Error &amp; Variety Specialist" data-experience="U.S. and Spanish coinage, mint errors, and varieties" data-description="Specializes in U.S. and Spanish coinage, mint errors, and rare varieties that require careful manual review." data-photo="public/appraisers/manny-vilahomat.png">
+                <img src="public/appraisers/manny-vilahomat.png" alt="" />
+                <span>Manny Vilahomat</span>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -452,6 +454,6 @@
       </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260516-3"></script>
   </body>
 </html>

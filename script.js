@@ -158,6 +158,37 @@ function bindCollectionCoins() {
   });
 }
 
+function bindAppraiserShowcase() {
+  const photo = document.getElementById("appraiserPhoto");
+  const name = document.getElementById("appraiserName");
+  const role = document.getElementById("appraiserRole");
+  const experience = document.getElementById("appraiserExperience");
+  const description = document.getElementById("appraiserDescription");
+  const thumbs = Array.from(document.querySelectorAll(".appraiser-thumb"));
+
+  if (!photo || !name || !role || !experience || !description || thumbs.length === 0) return;
+
+  const selectAppraiser = (thumb) => {
+    thumbs.forEach((item) => {
+      const active = item === thumb;
+      item.classList.toggle("appraiser-thumb--active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+
+    photo.src = thumb.dataset.photo || photo.src;
+    photo.alt = thumb.dataset.name || "";
+    name.textContent = thumb.dataset.name || "";
+    role.innerHTML = thumb.dataset.role || "";
+    experience.innerHTML = thumb.dataset.experience || "";
+    description.textContent = thumb.dataset.description || "";
+  };
+
+  thumbs.forEach((thumb) => {
+    thumb.setAttribute("aria-pressed", String(thumb.classList.contains("appraiser-thumb--active")));
+    thumb.addEventListener("click", () => selectAppraiser(thumb));
+  });
+}
+
 function bindActiveNav() {
   const root = document.querySelector(".page-shell");
   const links = Array.from(document.querySelectorAll(".site-nav__link"));
@@ -198,4 +229,5 @@ function bindActiveNav() {
 
 renderReviews();
 bindCollectionCoins();
+bindAppraiserShowcase();
 bindActiveNav();
