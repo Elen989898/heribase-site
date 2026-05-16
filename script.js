@@ -158,6 +158,21 @@ function bindCollectionCoins() {
   });
 }
 
+function buildCollectionCoinSides() {
+  document.querySelectorAll(".coin-3d[data-slices]").forEach((coin) => {
+    const count = Number(coin.getAttribute("data-slices")) || 56;
+    coin.style.setProperty("--slice-count", count);
+    coin.querySelectorAll(".coin-3d__slice").forEach((slice) => slice.remove());
+
+    for (let index = 0; index < count; index += 1) {
+      const slice = document.createElement("span");
+      slice.className = "coin-3d__slice";
+      slice.style.setProperty("--i", index);
+      coin.appendChild(slice);
+    }
+  });
+}
+
 function bindAppraiserShowcase() {
   const photo = document.getElementById("appraiserPhoto");
   const name = document.getElementById("appraiserName");
@@ -228,6 +243,7 @@ function bindActiveNav() {
 }
 
 renderReviews();
+buildCollectionCoinSides();
 bindCollectionCoins();
 bindAppraiserShowcase();
 bindActiveNav();

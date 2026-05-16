@@ -10,7 +10,7 @@
     />
     <link rel="icon" href="public/brand/heribase-icon-64.png" />
     <script src="app-env.js"></script>
-    <link rel="stylesheet" href="styles.css?v=20260516-3" />
+    <link rel="stylesheet" href="styles.css?v=20260516-4" />
   </head>
   <body>
     <main class="page-shell">
@@ -194,107 +194,59 @@
               <h2>Showcase your collection in 3D.</h2>
             </div>
             <p class="section-heading__copy">
-              Save your collectibles and present high-value pieces with a richer, more dimensional collection experience.
+              Heribase helps collectors save important pieces and present them with a richer, in-app 3D collection experience.
             </p>
           </div>
 
           <div class="collection-showcase" aria-label="Featured collectible coins">
-            <div class="collection-stage__coins" aria-hidden="true">
-              <div class="collection-side-coin collection-side-coin--silver">
-                <div class="collection-side-coin__badges">
-                  <span>Rare</span>
+            <div class="collection-stage-title">
+              <h3>3D Collection</h3>
+              <p>Showcase Your Collection in 3D</p>
+            </div>
+
+            <div class="collection-stage__coins">
+              <article class="collection-side-coin collection-side-coin--silver">
+                <div class="collection-side-coin__badges" aria-label="American Silver Eagle tags">
+                  <span>U.S. Coin</span>
                   <span>3D View</span>
                 </div>
-                <img src="public/coins/morgan-dollar-reverse.webp" alt="" />
-                <strong>Morgan Dollar</strong>
-              </div>
+                <img src="public/coins/american-silver-eagle-front.webp" alt="American Silver Eagle obverse" />
+                <strong>The American Silver Eagle</strong>
+              </article>
 
               <article class="collection-viewer">
-                <div class="collection-viewer__badges">
-                  <span>In-App 3D</span>
-                  <span>Ridged Edge</span>
+                <div class="collection-viewer__badges" aria-label="Saint-Gaudens Double Eagle tags">
+                  <span>U.S. Coin</span>
+                  <span>3D View</span>
                 </div>
                 <div class="coin-scene" aria-hidden="true">
+                  <span class="coin-orbit-arrow coin-orbit-arrow--left"></span>
+                  <span class="coin-orbit-arrow coin-orbit-arrow--right"></span>
                   <div class="coin-orbit">
-                    <div class="coin-3d coin-3d--morgan" id="collectionCoin">
-                      <span class="coin-3d__edge"></span>
-                      <span class="coin-3d__face">
-                        <img src="public/coins/morgan-dollar.webp" alt="" />
+                    <div class="coin-3d coin-3d--saint" id="collectionCoin" data-slices="56">
+                      <span class="coin-3d__face coin-3d__face--front">
+                        <img src="public/coins/saint-gaudens-front.webp" alt="" />
+                      </span>
+                      <span class="coin-3d__face coin-3d__face--back">
+                        <img src="public/coins/saint-gaudens-back.webp" alt="" />
                       </span>
                     </div>
                   </div>
                 </div>
                 <div class="collection-card__copy">
-                  <span class="collection-card__eyebrow" id="collectionCoinTag">Rotating Preview</span>
-                  <h3 id="collectionCoinName">Morgan Dollar</h3>
-                  <p id="collectionCoinDescription">Inspect collectible coins with a dimensional view, visible ridged edges, and a richer display experience inside Heribase.</p>
+                  <h3>The Saint-Gaudens Double Eagle</h3>
+                  <p>Save, inspect, and present high-value coins with a dimensional in-app collection view.</p>
                 </div>
               </article>
 
-              <div class="collection-side-coin collection-side-coin--gold">
-                <div class="collection-side-coin__badges">
-                  <span>Gold</span>
+              <article class="collection-side-coin collection-side-coin--bronze">
+                <div class="collection-side-coin__badges" aria-label="Liberty Head Double Eagle tags">
+                  <span>U.S. Coin</span>
                   <span>3D View</span>
                 </div>
-                <img src="public/coins/us-gold-double-eagle.webp" alt="" />
-                <strong>US Gold 20 Dollar Double Eagle</strong>
-              </div>
-            </div>
-
-            <div class="coin-selector" aria-label="Select a collection coin">
-              <button
-                class="coin-option coin-option--active"
-                type="button"
-                data-coin="morgan"
-                data-name="Morgan Dollar"
-                data-tag="Rotating Preview"
-                data-description="Inspect collectible coins with a dimensional view, visible ridged edges, and a richer display experience inside Heribase."
-                data-image="public/coins/morgan-dollar.webp"
-              >
-                <span class="coin-option__thumb coin-option__thumb--morgan">
-                  <img src="public/coins/morgan-dollar.webp" alt="" />
-                </span>
-                <span>
-                  <strong>Morgan Dollar</strong>
-                  <small>Silver classic</small>
-                </span>
-              </button>
-
-              <button
-                class="coin-option"
-                type="button"
-                data-coin="eagle"
-                data-name="American Gold Eagle"
-                data-tag="Gold Standard"
-                data-description="A premium gold-coin presentation for high-value collection highlights."
-                data-image="public/coins/american-gold-eagle.webp"
-              >
-                <span class="coin-option__thumb coin-option__thumb--eagle">
-                  <img src="public/coins/american-gold-eagle.webp" alt="" />
-                </span>
-                <span>
-                  <strong>American Gold Eagle</strong>
-                  <small>High-value gold</small>
-                </span>
-              </button>
-
-              <button
-                class="coin-option"
-                type="button"
-                data-coin="double-eagle"
-                data-name="US Gold 20 Dollar Double Eagle"
-                data-tag="Historic Gold"
-                data-description="A landmark U.S. gold coin presentation for premium pieces, provenance review, and high-value collection showcases."
-                data-image="public/coins/us-gold-double-eagle.webp"
-              >
-                <span class="coin-option__thumb coin-option__thumb--double-eagle">
-                  <img src="public/coins/us-gold-double-eagle.webp" alt="" />
-                </span>
-                <span>
-                  <strong>US Gold 20 Dollar Double Eagle</strong>
-                  <small>Historic U.S. gold</small>
-                </span>
-              </button>
+                <img src="public/coins/liberty-head-front.webp" alt="Liberty Head Double Eagle obverse" />
+                <strong>The Liberty Head Double Eagle</strong>
+              </article>
             </div>
           </div>
         </section>
@@ -454,6 +406,6 @@
       </div>
     </main>
 
-    <script src="script.js?v=20260516-3"></script>
+    <script src="script.js?v=20260516-4"></script>
   </body>
 </html>
