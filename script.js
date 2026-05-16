@@ -183,7 +183,7 @@ function bindAppraiserShowcase() {
 
   if (!photo || !name || !role || !experience || !description || thumbs.length === 0) return;
 
-  const carouselDelay = 15000;
+  const carouselDelay = 8000;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let activeIndex = Math.max(0, thumbs.findIndex((thumb) => thumb.classList.contains("appraiser-thumb--active")));
   let carouselTimer = 0;
