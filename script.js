@@ -168,6 +168,7 @@ function buildCollectionCoinSides() {
       const slice = document.createElement("span");
       slice.className = "coin-3d__slice";
       slice.style.setProperty("--i", index);
+      slice.style.setProperty("--edge-y", `${((-1680 / count) * index).toFixed(2)}px`);
       coin.appendChild(slice);
     }
   });
