@@ -1383,7 +1383,7 @@ a {
 }
 
 .coin-3d--saint {
-  --coin-edge-texture: url("public/coins/saint-gaudens-lettered-edge.png");
+  --coin-edge-texture: url("public/coins/saint-gaudens-lettered-edge.png?v=20260517-3");
   --coin-edge-a: #f7d786;
   --coin-edge-b: #a96b1f;
 }
